@@ -1,2 +1,3 @@
-# CSI2110
-Labs and Assignments for CSI2110
+# Data Structures and Algorithms
+
+Labs for Data Structures and Algorithms
