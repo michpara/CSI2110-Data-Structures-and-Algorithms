@@ -18,32 +18,34 @@ class DLinkedList {
 
     // Inserts a node into the list after pAfter
     void InsertNode(ListNode nNode, ListNode pAfter) {
-      nNode.next = pAfter.next;
-      nNode.previous = pAfter;
-      pAfter.next = nNode;
-      lastNode = nNode;
+		nNode.next = pAfter.next;
+		nNode.previous = pAfter;
+		pAfter.next = nNode;
+		lastNode = nNode;
     }
 
     // Removes the specified node from the list
     void RemoveNode(ListNode nNode) {
-      if(firstNode == null || nNode == null){
-        return;
-      }
-      if(firstNode == nNode){
-        firstNode = nNode.next;
-      }
+		if(firstNode == null || nNode == null){
+			return;
+		}
+		if(firstNode == nNode){
+			firstNode = nNode.next;
+		}
 
-      if(lastNode == nNode){
-        lastNode = nNode.previous;
-      }
+		if(lastNode == nNode){
+			lastNode = nNode.previous;
+		}
 
-      if(nNode.next != null){
-        nNode.next.previous = nNode.previous; 
-      }
-      if (nNode.previous != null) { 
-        nNode.previous.next = nNode.next; 
-      }
-      return; 
+		if(nNode.next != null){
+			nNode.next.previous = nNode.previous; 
+		}
+
+		if (nNode.previous != null) { 
+			nNode.previous.next = nNode.next; 
+		}
+		
+		return; 
     }
 
     // print the content of the list

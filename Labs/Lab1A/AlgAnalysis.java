@@ -31,6 +31,7 @@ public class AlgAnalysis {
 	public static void arraySortRuntime(int count, int maxSize){
 		int interval = maxSize/count;
 		long result = 0;
+		
 		for(int i = interval; i <= maxSize; i+=interval){
 			for(int j = 0; j < 10; j++){
 				int[] randomArray = randomizeArray(genArray(i));

@@ -7,17 +7,25 @@
  */
 
 public class DNode {
-  private Object element;
-  private DNode prev;
-  private DNode next;
-  DNode() { this(null, null, null); }
-    DNode(Object e, DNode p, DNode n) {
-    element = e;
-    prev = p;
-    next = n;
-  }
-  public void setElement(Object newElem) { element = newElem; }
-  public void setNext(DNode newNext) { next = newNext; }
-  public Object getElement() { return element; }
-  public DNode getNext() { return next; }
+	private Object element;
+	private DNode prev;
+	private DNode next;
+
+	DNode() {
+		this(null, null, null); 
+	}
+
+	DNode(Object e, DNode p, DNode n) {
+		element = e;
+		prev = p;
+		next = n;
+	}
+
+	public void setElement(Object newElem) { element = newElem; }
+
+	public void setNext(DNode newNext) { next = newNext; }
+
+	public Object getElement() { return element; }
+	
+	public DNode getNext() { return next; }
 }
