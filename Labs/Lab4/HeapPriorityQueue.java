@@ -58,9 +58,10 @@ public class HeapPriorityQueue<K extends Comparable,V> implements PriorityQueue<
     	if(tail == storage.length-1) {
     		throw new IllegalArgumentException();
     	}
-    	Entry entry = new Entry(key, value);
+    	Entry<K,V> entry = new Entry<>(key, value);
     	tail++;
     	storage[tail] = entry;
+    	upHeap(tail);
     	return entry;
     }
     
@@ -85,7 +86,12 @@ public class HeapPriorityQueue<K extends Comparable,V> implements PriorityQueue<
     	if(isEmpty()) {
     		return null;
     	}
-        Entry temp = storage[0];
+        Entry<K,V> temp = storage[0];
+    	if(tail == 0) {
+    		tail = -1;
+    		storage[0] = null;
+    		return temp;
+    	}
         storage[0] = storage[tail];
         storage[tail] = null;
         tail--;
@@ -105,12 +111,14 @@ public class HeapPriorityQueue<K extends Comparable,V> implements PriorityQueue<
     * O(log(n))
     */
     private void upHeap(int location){
-         for(int i = tail; i>=0; i--) {
-        	 if(storage[i].getKey().compareTo(storage[parent(i)].getKey()) <0) {
-        		 swap(i, parent(i));
-        	 }
-        	 i--;
-         }
+    	if(location == 0) {
+    		return;
+    	}
+    	int parent = parent(location);
+    	if(storage[parent].getKey().compareTo(storage[location].getKey()) > 0) {
+    		swap(location, parent);
+    		upHeap(parent);
+        }
     }
     
     /**
@@ -118,21 +126,31 @@ public class HeapPriorityQueue<K extends Comparable,V> implements PriorityQueue<
     * O(log(n))
     */
     private void downHeap(int location){
-    	int i = location;
-    	while(i < storage.length && 2*i <= tail+1){
-    		if(storage[2*i+1].getKey().compareTo(storage[2*i+2].getKey()) < 0) {
-    			if(storage[2*i+1].getKey().compareTo(storage[i].getKey()) < 0) {
-    				swap(2*i+1, i);
-    			}
-    			i = 2*i +1;
-    		}else {
-    			if(storage[2*i+2].getKey().compareTo(storage[i].getKey()) <0) {
-    				swap(2*i+2, i);
-    			}
-    			i = 2*i+2;
-    		}
+    	int left = 2*location+1;
+    	int right = 2*location+2;
+
+    	if(left > tail) return;
+
+        if(left == tail){
+             if(storage[location].key.compareTo(storage[left].key) > 0){
+                 swap(location,left);                  
+             }
+             return;
+        }
+    	if(storage[left].getKey().compareTo(storage[right].getKey()) < 0) {
+    		if(storage[location].getKey().compareTo(storage[left].getKey()) > 0) {
+   				swap(location, left);
+   	    		downHeap(left);
+   			}
+   		}
+    	else {
+   			if(storage[location].getKey().compareTo(storage[right].getKey()) > 0) {
+   				swap(location, right);   
+   	   			downHeap(right);
+   			}
     	}
     }
+    
     
     /**
     * Find parent of a given location,
@@ -140,27 +158,16 @@ public class HeapPriorityQueue<K extends Comparable,V> implements PriorityQueue<
     * O(1)
     */
     private int parent(int location){
-    	if(location == 0) {
-    		return 0;
-    	}
-    	int parent;
-        if(location%2==0) {
-        	parent = location-2/2;
-        }else {
-        	parent = location-1/2;
-        }
-        return parent;
+        return (location-1)/2;
     }
     
-   
     /**
     * Inplace swap of 2 elements, assumes locations are in array
     * O(1)
     */
     private void swap(int location1, int location2){
-        Entry temp = storage[location1];
+        Entry<K,V> temp = storage[location1];
         storage[location1] = storage[location2];
         storage[location2] = temp;  
     }
-    
 }
