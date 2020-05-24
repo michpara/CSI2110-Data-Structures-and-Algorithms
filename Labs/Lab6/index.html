@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+   
+   
+
+
+<p>
+<h1>Lab 6</h1>
+<hr/>
+<h2>AVL and BST Height Comparison</h2>
+<p>
+Study the AVL tree implementation of Goodrich et al. The approach
+consists of an AVL tree implementation <tt>AVLTree.java</tt> extending
+the binary search tree implementation <tt>BinarySearchTree.java</tt>
+which is implemented with a linked list
+<tt>LinkedBinaryTree.java</tt>. We have seen the linked binary tree
+implementation before -- see Lab 5. These classes are all
+part of the net.datastructures package which is contained (as far as
+required) in the zip archive for this lab.
+</p>
+
+<p>
+Study the code in the skeleton <tt>Verify.java</tt>. You have to
+implement the two missing methods such that <tt>Verify</tt>
+prints statistics about the heights of regular Binary Search Trees and
+AVL trees. 
+</p>
+
+<p>
+The method <tt>void randomTrees( int _noNodes, int _nTrees )</tt>
+creates <tt>_nTrees</tt> trees with <tt>_noNodes</tt> at random. It
+inserts random integer keys in a BST and AVL tree. The class Verify is
+employed to keep track of the height of each tree and records the
+minimum, maximum and average height for the AVL and BST trees.
+</p>
+ 
+<p>
+The method <tt> int height( BinaryTree bTree ) calculates
+the height of any binary tree. 
+</tt></p>
+
+
+<p> 
+The program output should look as follows:
+</p>
+<img src="output.png"/>
+
+
+
+</p>
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=20.20.4.21309-31 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML','130'); });</script></body></html>
