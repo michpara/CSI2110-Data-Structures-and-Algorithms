@@ -90,7 +90,7 @@ public class ArrayHashTable<K,V> implements HashTable<K,V> {
 		long h = func1.Hash(key);
         long h2 = (func2==null)? 1 : func2.Hash(key); 
         for(int i = 0; i< size; i++){
-            int hash = (int)((h+step.step(i, h2,size))%size);
+            int hash = (Math.floorMod((h+step.step(i, h2, size)), size));
             Entry<K,V> entry = table.get(hash);
             if(entry == null) return false;
             if(entry.key == null){   //Special Case for deleted object
@@ -115,7 +115,7 @@ public class ArrayHashTable<K,V> implements HashTable<K,V> {
 		long h2 = (func2 == null)? 1 : func2.Hash(key);
 
 		for(int i = 0; i<size; i++) {
-			int hash = (int)((h+step.step(i, h2, size))%size);
+            int hash = (Math.floorMod((h+step.step(i, h2, size)), size));
             Entry<K,V> entry = table.get(hash);
             if(this.contains(key)) {
             	if(entry.key.equals(key)) {
@@ -126,16 +126,8 @@ public class ArrayHashTable<K,V> implements HashTable<K,V> {
             else if(entry == null || entry.key == null ) {
             	table.set(hash, new Entry(key, value));
             	elements++;
-        		for(int j =0; j<size; j++) {
-        			if(table.get(j) != null) {
-        				System.out.println(j + " is " + table.get(j).key);
-        			}else {
-        				System.out.println(j + " is null");
-        			}
-        		}
             	return true;
             }
-
 		}
 		return false;
     }
@@ -152,4 +144,3 @@ public class ArrayHashTable<K,V> implements HashTable<K,V> {
         }
     }
 }
-

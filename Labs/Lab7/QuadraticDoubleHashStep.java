@@ -15,7 +15,7 @@
 // ==========================================================================
 public class QuadraticDoubleHashStep implements SteppingFunction{
         public long step(int i, long data, int size){
-        return i*i*data;
+        return (long) ((Math.pow(i, 2))*data);
     }
     public String getType(){return "Quadratic Double Hashing";}
 }

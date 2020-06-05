@@ -95,6 +95,5 @@ public class HashingTest {
         test.HashAndStats(words,doubleH);
         test.HashAndStats(words,quadDoubleH);
         test.HashAndStats(words,chain);
-        
     }
 }

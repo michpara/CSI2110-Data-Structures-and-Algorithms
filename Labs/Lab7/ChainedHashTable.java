@@ -105,10 +105,6 @@ public class ChainedHashTable<K,V> implements HashTable<K,V> {
         	elements++;
         	return true;
         }
-        System.out.println(hash);
-        for(Entry<K, V> e : list) {
-        	System.out.println(e.key);
-        }
 		for(int i = 0; i<list.size(); i++) {
             Entry<K,V> e = list.get(i);
             if(this.contains(key)) {
