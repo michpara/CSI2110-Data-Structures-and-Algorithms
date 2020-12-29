@@ -1,4 +1,4 @@
-# Data Structures and Algorithms
+# Data Structures and Algorithms <img src="https://media.giphy.com/media/HBWbIuHvXI2Eo/giphy.gif" width="100">
 
 Labs for Data Structures and Algorithms
 
